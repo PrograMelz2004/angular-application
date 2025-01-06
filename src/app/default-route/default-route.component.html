@@ -1,0 +1,15 @@
+<div class="main">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h1>Questions and Answers</h1>
+            <button class="btn btn-warning" routerLink="/second-route">
+                Go To Second Route
+            </button>
+        </div>
+        
+        <div *ngFor="let question of questions; let i = index" class="qa">
+            <h2>{{i + 1}}. {{question.question}}</h2>
+            <p><strong>Answer:</strong> {{question.answer}}</p>
+        </div>
+    </div>
+</div>

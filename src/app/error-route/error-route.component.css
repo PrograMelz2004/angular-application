@@ -1,0 +1,85 @@
+h1 {
+    font-size: 3rem;
+    color: red;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-shadow: 0 0 5px #f5deb3, 0 0 10px #f5deb3;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #000;
+    margin: 15px 0;
+}
+
+strong {
+    color: green;
+    font-weight: bold;
+}
+
+.main {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.container {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.qa {
+    background: #2b2b2b;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qa:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: #f5deb3;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+}
