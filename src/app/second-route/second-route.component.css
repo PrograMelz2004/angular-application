@@ -95,3 +95,26 @@ button.btn:disabled {
     cursor: not-allowed;
 }
 
+/* Error message styling */
+.error-message {
+    color: red;  /* Red color for errors */
+    font-size: 1.1rem;  /* Same font size as labels to keep consistency */
+    font-weight: bold;  /* Bold for emphasis */
+    margin-top: 5px;  /* Slight space between the input and the error message */
+    text-align: left;  /* Align text to the left, like labels */
+    padding: 5px 0;  /* Padding for spacing */
+    border-top: 1px solid red;  /* Red border on top for added emphasis */
+    background-color: rgba(255, 0, 0, 0.1); /* Light red background to make it stand out */
+    border-radius: 5px;  /* Matching rounded corners */
+    transition: all 0.3s ease-in-out;  /* Smooth transition when the error message appears */
+}
+
+.error-message.ng-enter, .error-message.ng-leave {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+.error-message.ng-enter-active, .error-message.ng-leave-active {
+    opacity: 1;
+    transform: translateY(0);
+}

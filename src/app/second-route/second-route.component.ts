@@ -21,22 +21,23 @@ import { RouterModule } from '@angular/router';
 export class SecondRouteComponent {
 
   registrationForm: FormGroup;
+  submitted = false;
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],  // assuming mobile number has 10 digits
-      username: ['', [Validators.required, Validators.email]],  // username is an email
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, this.passwordStrengthValidator]]
     });
   }
 
-  // Password strength validator
   passwordStrengthValidator(control: any) {
     const password = control.value;
     if (!password) return null;
+
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
     const hasNumber = /\d/.test(password);
@@ -44,18 +45,38 @@ export class SecondRouteComponent {
     const minLength = password.length >= 8;
 
     if (hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar && minLength) {
-      return null;  // Valid password
+      return null;
     } else {
       return { weakPassword: 'Password must be at least 8 characters long and contain a mix of uppercase, lowercase, numbers, and special characters' };
     }
-  }
+  }  
 
-  // On form submit
   onSubmit() {
+    this.submitted = true;
+
     if (this.registrationForm.valid) {
-      console.log('Form Submitted:', this.registrationForm.value);
+      alert("Success! No errors found.");
     } else {
       console.log('Form is invalid');
     }
   }
+
+  getErrorMessage(controlName: string) {
+    const control = this.registrationForm.get(controlName);
+
+    if (this.submitted && control?.hasError('required')) {
+      return 'This field is required';
+    }
+    if (this.submitted && control?.hasError('email')) {
+      return 'Please enter a valid email address';
+    }
+    if (this.submitted && control?.hasError('pattern')) {
+      return 'Please enter only 10 digit mobile number';
+    }
+    if (this.submitted && control?.hasError('weakPassword') && control.errors) {
+      return control.errors['weakPassword'];
+    }
+
+    return '';
+  }  
 }
